@@ -1,5 +1,5 @@
 pub fn longest_palindrome(s: String) -> String {
-    let mut palindromes: Vec<Vec<char>> = Vec::new();
+    let mut result_palindrome: Vec<char> = Vec::new();
     let mut current_string: Vec<char> = Vec::new();
     let mut longest_length: usize = 0;
     let s = s.chars().collect::<Vec<char>>();
@@ -27,10 +27,9 @@ pub fn longest_palindrome(s: String) -> String {
                 // println!("{:?} is the same!", current_string);
                 if current_string.len() > longest_length {
                     longest_length = current_string.len();
+                    result_palindrome = current_string.clone();
                 }
-                palindromes.push(current_string.clone());
             }
-
         }
 
         current_string.clear();
@@ -39,17 +38,15 @@ pub fn longest_palindrome(s: String) -> String {
         
     }
 
-    for palindrome in palindromes {
-        if palindrome.len() >= longest_length {
-            return palindrome.into_iter().collect();
-        }
+    if result_palindrome.len() > 0 {
+        return result_palindrome.iter().collect();
     }
     
     s[0].to_string()
 }
 
 fn main() {
-    let res: String = longest_palindrome("uhrfjotnewtodhmbplsaolnpcdaohiytmfllukijouxipvqohtsgxbtfoxyfkfczkfwhzimbefiohmtimrcxbpgcxogystdkcqujvbxsgirpccdnvejtljftwkdpsqpflzwruwwdzovsbmwbcvlftkjnxqaguvtsycylqzquqkbnybnbaeahbxejhphwrpmymcemuhljwtuvxefqfzjhskuqhifydkxpnfwfxkpeexnjltfqwfvchphmtsrsyayxukvmlqodshqwbeaxhcxdbssnrdzvxtusngwqdxvluauphmmbwmgtazjwvolenegwbmjfwprfuswamyvgrgshqocnhirgyakbkkggviorawadzhjipjjgiwpelwxvtaegauerbwpalofrbghfhnublttqtcmqskcocwwwxpnckrnbepusjyohsrretrqyvgnbezuvwmzizcefxyumtdwnqjkgsktyuacfpnqocqjxcurmipjfqmjqrkdeqsfseyigqlwmzgqhivbqalcxhlzgtsfjbdbfqiedogrqasgmimifdexbjjpfusxsypxobxjtcwxnkpgkdpgskgkvezkriixpxkkattyplnpdbdifforxozfngmlgcunbnubzamgkkfbswuqfqrvzjqmlfqxeqpjaqayodtetsecmfbplscmslpqiyhhykftzkkhshxqvdwmwowokpluwyvavwvofwqtdilwqjgrprukzyhckuspyzaoe".to_string());
+    let res: String = longest_palindrome("borcdubqiupahpwjizjjbkncelfazeqynfbrnzuvbhjnyvrlkdyfyjjxnprfocrmisugizsgvhszooktdwhehojbrdbtgkiwkhpfjfcstwcajiuediebdhukqnroxbgtvottummbypokdljjvnthcbesoyigscekrqswdpalnjnhcnqrarxuufzzmkwizptyvjhpfidgmskuaggtpxqisdlyloznkarxofzeeyvteynluofuhbllyiszszbwnsglqjkignusarxsjvctpgiwnhdufmfpanfwxjwlmhgllzsmdpncbwnsbdtsvrjybynifywkulqnzprcxockbhrhvnwxrkvwumyieazclcviumvormynbryaziijpdinwatwqppamfiqfiojgwkvfzyxadyfjrgmtttvlgkqghgbcfhkigfojjkhskzenlpasyozcsuccdxhulcubsgomvcrbqwakrraesfifecmoztayrdjicypakrrneulfbqqxtrdelggedvloebqaztmfyfkhuonrognejxpesmwgnmnnnamvkxqvzrgzdqtvuhccryeowywmbixktnkqnwzlzfvloyqcageugmjqihyjxhssmhkfzxpzxmgpjgsduogfolnkkqizitbvvgrkczmojxnabruwwzxxqcevdwvtiigwckpxnnxxxdhxpgomncttju".to_string());
 
     print!("{res}");
 }
